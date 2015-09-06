@@ -3,14 +3,14 @@
 Download the code
 
 ```
-go get -u github.com/theplant/device_management
+go get -u github.com/theplant/hybris_qor_cms
 ```
 
 
 Go to the code directory
 
 ```
-cd $GOPATH/src/github.com/theplant/device_management
+cd $GOPATH/src/github.com/theplant/hybris_qor_cms
 ```
 
 
@@ -24,7 +24,7 @@ source dev_env
 Create database
 
 ```
-mysql -u root -e "create database device_management"
+mysql -u root -e "create database hybris_qor_cms"
 ```
 
 
