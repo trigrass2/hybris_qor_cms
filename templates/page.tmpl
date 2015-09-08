@@ -157,7 +157,7 @@
   <div class="carousel multi fade dynamic ng-scope active" ng-controller="ProductsData" data-carousel="" data-carousel-page-items="3" data-carousel-page-width="1170" data-product-codes="[0010248197.0790, 0010248200.9030, 0010248201.1087]">
     <div class="viewport">
       <div class="slides" style="width: 1170px;">
-    
+    {{range .products}}
     <article class="product ng-scope" >
 
           <div class="image">
@@ -169,15 +169,15 @@
               },
               {&quot;href&quot;:&quot;/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790&quot;
             }]" href="/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790">
-              <img data-lazy-src="http://www.asics.co.uk/medias/sys_master/images/products/9727638274078/T547N_0790_0010248197_f_lateral_primary.jpg" ng-alt="GEL-KAYANO 22" class="loaded" src="http://www.asics.co.uk/medias/sys_master/images/products/9727638274078/T547N_0790_0010248197_f_lateral_primary.jpg" style="display: block;">
+              <img data-lazy-src="http://www.asics.co.uk/medias/sys_master/images/products/9727638274078/T547N_0790_0010248197_f_lateral_primary.jpg" ng-alt="GEL-KAYANO 22" class="loaded" src="http://localhost:9001{{.Picture.DownloadURL}}" style="display: block;">
             </a>
             <h4 class="badge">NEW</h4>
           </div>
 
           <div class="content">
-            <h3 class="name"><a ng-href="/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790" class="ng-binding" href="/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790">GEL-KAYANO 22</a></h3>
+            <h3 class="name"><a ng-href="/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790" class="ng-binding" href="/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790">{{.Name}}</a></h3>
             <ul class="pricing">
-              <li class="price ng-binding">£150.00</li>
+              <li class="price ng-binding">£{{.Price.Price}}</li>
             </ul>
             <h4 class="product_type ng-binding">Men Running Shoes</h4>
             <p class="summary ng-scope ng-binding" ng-if="product.standfirstDescription">Your number 1 shoe for going the distance</p>
@@ -200,6 +200,7 @@
               Quick Buy</a>
           </div>
         </article>
+      {{end}}
       </div>
     </div>
   </div>

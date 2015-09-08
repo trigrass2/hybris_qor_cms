@@ -11,8 +11,31 @@ type Page struct {
 }
 
 type Product struct {
-	Code        string
-	Description string
-	Detail      string
-	Image       string
+	gorm.Model
+	Name          string
+	Description   string
+	Picture       *Picture
+	Price         *Price
+	Europe1Prices *Europe1Price
+}
+
+type Europe1Price struct {
+	PriceRow []*PriceRow
+}
+type PriceRow struct {
+	Uri string `json:"@uri"`
+}
+
+type Picture struct {
+	Code        string `json:"@code"`
+	DownloadURL string `json:"@downloadURL"`
+}
+
+type Price struct {
+	Price    string
+	Currency *Currency
+}
+
+type Currency struct {
+	Isocode string `json:"@isocode"`
 }
