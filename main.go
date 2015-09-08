@@ -3,53 +3,81 @@ package main
 import (
 	"log"
 	"net/http"
+	"strings"
+
+	"github.com/gin-gonic/gin"
 
 	"github.com/qor/qor"
 	"github.com/qor/qor/admin"
 	"github.com/qor/qor/i18n"
 	"github.com/qor/qor/i18n/backends/database"
 	"github.com/qor/qor/roles"
-	"github.com/theplant/device_management/db"
+	"github.com/theplant/hybris_qor_cms/controllers"
+	"github.com/theplant/hybris_qor_cms/db"
 )
 
 func main() {
 	roles.Register("admin", func(req *http.Request, cu qor.CurrentUser) bool {
 		return true
 	})
-
+	mux := http.NewServeMux()
 	adm := admin.New(&qor.Config{DB: &db.DB})
 
 	adm.SetAuth(&Auth{})
-	device := adm.AddResource(&db.Device{}, &admin.Config{Menu: []string{"数据维护"}})
-	device.Meta(&admin.Meta{Name: "CategoryID", Type: "select_one", Collection: db.DeviceCategories})
-	device.Meta(&admin.Meta{Name: "WarehouseID", Type: "select_one", Collection: db.WarehouseCollection})
-	device.EditAttrs("Name", "Code", "TotalQuantity")
-	device.IndexAttrs("Name", "Code", "TotalQuantity")
+	page := adm.AddResource(&db.Page{}, &admin.Config{Menu: []string{"Cms"}})
+	page.Meta(&admin.Meta{
+		Name:     "Section1",
+		Type:     "rich_editor",
+		Resource: adm.AddResource(&admin.AssetManager{}, &admin.Config{Invisible: true}),
+	})
 
 	I18nBackend := database.New(&db.DB)
 	// config.I18n = i18n.New(I18nBackend)
 	adm.AddResource(i18n.New(I18nBackend), &admin.Config{Menu: []string{"系统设置"}, Invisible: true})
 
-	adm.MountTo("/admin", http.DefaultServeMux)
-	// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-	// 	http.Redirect(w, r, "/admin/report_items", 302)
-	// })
+	adm.MountTo("/admin", mux)
+	// frontend routes
+	router := gin.Default()
+	router.LoadHTMLGlob("templates/*")
+	bindPages(router)
+	router.StaticFS("/system/", http.Dir("public/system"))
+	// books
+	pageRoutes := router.Group("/page")
+	{
+		// listing
+		// pageRoutes.GET("", controllers.ListBooksHandler)
+		// pageRoutes.GET("/", controllers.ListBooksHandler)
+		pageRoutes.GET("/:id", controllers.ViewPageHandler)
+	}
+
+	mux.Handle("/", router)
 
 	log.Println("Starting Server at 9000.")
-	err := http.ListenAndServe(":9000", nil)
+	err := http.ListenAndServe(":9000", mux)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
+	}
+}
+
+func bindPages(router *gin.Engine) {
+	pages := []db.Page{}
+	db.DB.Find(&pages)
+	for _, page := range pages {
+		if !strings.HasPrefix(page.Url, "/") {
+			page.Url = "/" + page.Url
+		}
+		router.GET(page.Url, controllers.ViewPageHandler2)
 	}
 }
 
 type Auth struct{}
 
 func (Auth) LoginURL(c *admin.Context) string {
-	return "/admin/report_items"
+	return "/admin/pages"
 }
 
 func (Auth) LogoutURL(c *admin.Context) string {
-	return "/admin/report_items"
+	return "/admin/pages"
 }
 
 func (Auth) GetCurrentUser(c *admin.Context) qor.CurrentUser {
@@ -65,5 +93,5 @@ func (u User) AvailableLocales() []string {
 }
 
 func (u User) DisplayName() string {
-	return "管理员"
+	return "Admin"
 }

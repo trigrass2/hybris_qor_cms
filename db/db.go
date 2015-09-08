@@ -5,22 +5,15 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
+	"github.com/qor/qor/admin"
 	"github.com/qor/qor/validations"
 	"github.com/theplant/device_management/config"
 )
 
 var DB gorm.DB
 var AllModels = []interface{}{
-	// &DeviceOut{},
-	// &DeviceIn{},
-	// &ReportItem{},
-	&Device{},
-	// &ClientDeviceIn{},
-	// &ClientDeviceOut{},
-	// &Warehouse{},
-	// &ConsumableIn{},
-	// &ConsumableOut{},
-	// &Employee{},
+	&Page{},
+	&admin.AssetManager{},
 }
 
 func init() {

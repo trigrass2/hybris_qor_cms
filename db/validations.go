@@ -1,22 +1,17 @@
 package db
 
-import (
-	"github.com/jinzhu/gorm"
-	"github.com/qor/qor/validations"
-)
+// func (device Device) Validate(db *gorm.DB) {
+// 	var deviceInDb Device
+// 	db.Where("code = ?", device.Code).First(&deviceInDb)
 
-func (device Device) Validate(db *gorm.DB) {
-	var deviceInDb Device
-	db.Where("code = ?", device.Code).First(&deviceInDb)
+// 	if deviceInDb.ID != 0 && deviceInDb.ID != device.ID {
+// 		db.AddError(validations.NewError(device, "Code", "代码已经存在了，不能重复"))
+// 	}
 
-	if deviceInDb.ID != 0 && deviceInDb.ID != device.ID {
-		db.AddError(validations.NewError(device, "Code", "代码已经存在了，不能重复"))
-	}
-
-	if device.Name == "" {
-		db.AddError(validations.NewError(device, "Name", "设备名称不能为空"))
-	}
-}
+// 	if device.Name == "" {
+// 		db.AddError(validations.NewError(device, "Name", "设备名称不能为空"))
+// 	}
+// }
 
 // func (cdIn *ClientDeviceIn) Validate(db *gorm.DB) {
 // 	if len(strings.TrimSpace(cdIn.DeviceName)) == 0 {
