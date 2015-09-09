@@ -47,9 +47,9 @@ func main() {
 		// listing
 		// pageRoutes.GET("", controllers.ListBooksHandler)
 		// pageRoutes.GET("/", controllers.ListBooksHandler)
-		pageRoutes.GET("/:id", controllers.ViewPageHandler)
+		pageRoutes.GET("/:url", controllers.ViewPageHandler2)
 	}
-
+	// router.GET("/:pageurl", controllers.ViewPageHandler2)
 	mux.Handle("/", router)
 
 	log.Println("Starting Server at 9000.")

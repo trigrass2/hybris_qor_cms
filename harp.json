@@ -1,0 +1,30 @@
+{
+	"goos": "linux",
+	"goarch": "amd64",
+	"app": {
+		"name":       "hybris_qor_cms",
+		"importpath": "github.com/theplant/hybris_qor_cms",
+		"envs": {},
+		"DefaultExcludeds": [".git/", "tmp/", ".DS_Store", "node_modules/", "*.swp"],
+		"files":      [
+			"github.com/theplant/hybris_qor_cms",
+			"github.com/qor/qor"
+		]
+	},
+	"servers": {
+		"prod": [{
+			"gopath": "/home/app",
+			"user": "app",
+			"host": "54.64.71.113",
+			"envs": {
+				"DEVICEM_MYSQL_PORT_3306_TCP_ADDR":"localhost",
+				"DEVICEM_MYSQL_ENV_MYSQL_ROOT_PASSWORD":"ufdcXNU8.JkBxJ5vu4bZ",
+				"DEVICEM_MYSQL_PORT_3306_TCP_PORT":"3306",
+				"DEVICEM_MYSQL_DATABASE":"hybris_qor_cms",
+				"DEVICEM_ENV":"development",
+				"DEVICEM_WEBDIR":"./www"
+			},
+			"port": ":22"
+		}]
+	}
+}

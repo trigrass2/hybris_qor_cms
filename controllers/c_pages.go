@@ -45,7 +45,8 @@ func ViewPageHandler(ctx *gin.Context) {
 
 func ViewPageHandler2(ctx *gin.Context) {
 	page := &db.Page{}
-	if err := db.DB.Where("url = ?", ctx.Request.URL.RequestURI()).Find(&page).Error; err != nil {
+	url := ctx.Params.ByName("url")
+	if err := db.DB.Where("url = ?", "/"+url).Find(&page).Error; err != nil {
 		panic(err)
 	}
 
