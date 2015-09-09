@@ -7,7 +7,7 @@ import (
 	"github.com/jinzhu/gorm"
 	"github.com/qor/qor/admin"
 	"github.com/qor/qor/validations"
-	"github.com/theplant/device_management/config"
+	"github.com/theplant/hybris_qor_cms/config"
 )
 
 var DB gorm.DB

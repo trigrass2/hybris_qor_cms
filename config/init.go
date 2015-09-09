@@ -29,7 +29,6 @@ func init() {
 	MySQLDatabase = envOrPanic("HYBRIS_MYSQL_DATABASE", false)
 	Verbose = (envOrPanic("HYBRIS_VERBOSE", true) != "")
 	Host = envOrPanic("HYBRIS_HOST", false)
-	log.Println(Host)
 }
 
 func envOrPanic(key string, allowEmpty bool) (r string) {
