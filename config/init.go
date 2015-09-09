@@ -14,19 +14,22 @@ var (
 	MySQLDatabase     string
 	MySQLRootPassword string
 	Verbose           bool
+	Host              string
 )
 
 func init() {
 	log.SetFlags(log.Lshortfile | log.Ldate | log.Lmicroseconds)
 
-	Env = envOrPanic("DEVICEM_ENV", false)
+	Env = envOrPanic("HYBRIS_ENV", false)
 
-	MySQLHost = envOrPanic("DEVICEM_MYSQL_PORT_3306_TCP_ADDR", false)
-	MySQLPort = envOrPanic("DEVICEM_MYSQL_PORT_3306_TCP_PORT", false)
-	MySQLRootPassword = envOrPanic("DEVICEM_MYSQL_ENV_MYSQL_ROOT_PASSWORD", true)
+	MySQLHost = envOrPanic("HYBRIS_MYSQL_PORT_3306_TCP_ADDR", false)
+	MySQLPort = envOrPanic("HYBRIS_MYSQL_PORT_3306_TCP_PORT", false)
+	MySQLRootPassword = envOrPanic("HYBRIS_MYSQL_ENV_MYSQL_ROOT_PASSWORD", true)
 
-	MySQLDatabase = envOrPanic("DEVICEM_MYSQL_DATABASE", false)
-	Verbose = (envOrPanic("DEVICEM_VERBOSE", true) != "")
+	MySQLDatabase = envOrPanic("HYBRIS_MYSQL_DATABASE", false)
+	Verbose = (envOrPanic("HYBRIS_VERBOSE", true) != "")
+	Host = envOrPanic("HYBRIS_HOST", false)
+	log.Println(Host)
 }
 
 func envOrPanic(key string, allowEmpty bool) (r string) {

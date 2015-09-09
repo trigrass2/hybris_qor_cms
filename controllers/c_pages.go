@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/theplant/hybris_qor_cms/config"
 	"github.com/theplant/hybris_qor_cms/db"
 	"github.com/theplant/hybris_qor_cms/hybris"
 
@@ -36,6 +37,7 @@ func ViewPageHandler(ctx *gin.Context) {
 		gin.H{
 			"page":     page,
 			"products": products,
+			"host":     template.URL(config.Host),
 			"raw": func(html string) template.HTML {
 				return template.HTML(html)
 			},
@@ -73,6 +75,7 @@ func ViewPageHandler2(ctx *gin.Context) {
 		gin.H{
 			"page":     page,
 			"products": products,
+			"host":     template.URL(config.Host),
 			"raw": func(html string) template.HTML {
 				return template.HTML(html)
 			},

@@ -147,7 +147,7 @@
 </ul><section id="feature">
     </section>
   <section>
-
+{{$Host := .host}}
 <div class="content slide" style="">
   {{call .raw .page.Section1}} 
  </div>
@@ -169,7 +169,7 @@
               },
               {&quot;href&quot;:&quot;/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790&quot;
             }]" href="/Shop/Shoes/Running/Men/GEL-KAYANO-22/p/0010248197.0790">
-              <img src="http://127.0.0.1:9001{{.Picture.DownloadURL}}" style="display: block;">
+              <img src="{{$Host}}{{.Picture.DownloadURL}}" style="display: block;">
             </a>
             <h4 class="badge">NEW</h4>
           </div>

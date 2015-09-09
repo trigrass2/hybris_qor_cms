@@ -1,7 +1,8 @@
 
-export DEVICEM_MYSQL_PORT_3306_TCP_ADDR=localhost
-export DEVICEM_MYSQL_ENV_MYSQL_ROOT_PASSWORD=
-export DEVICEM_MYSQL_PORT_3306_TCP_PORT=3306
-export DEVICEM_MYSQL_DATABASE=hybris_qor_cms
-export DEVICEM_ENV=development
-export DEVICEM_WEBDIR=./www
+export HYBRIS_MYSQL_PORT_3306_TCP_ADDR=localhost
+export HYBRIS_MYSQL_ENV_MYSQL_ROOT_PASSWORD=
+export HYBRIS_MYSQL_PORT_3306_TCP_PORT=3306
+export HYBRIS_MYSQL_DATABASE=hybris_qor_cms
+export HYBRIS_ENV=development
+export HYBRIS_WEBDIR=./www
+export HYBRIS_HOST=http://localhost:9001

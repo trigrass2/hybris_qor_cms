@@ -17,12 +17,13 @@
 			"user": "app",
 			"host": "54.64.71.113",
 			"envs": {
-				"DEVICEM_MYSQL_PORT_3306_TCP_ADDR":"localhost",
-				"DEVICEM_MYSQL_ENV_MYSQL_ROOT_PASSWORD":"ufdcXNU8.JkBxJ5vu4bZ",
-				"DEVICEM_MYSQL_PORT_3306_TCP_PORT":"3306",
-				"DEVICEM_MYSQL_DATABASE":"hybris_qor_cms",
-				"DEVICEM_ENV":"development",
-				"DEVICEM_WEBDIR":"./www"
+				"HYBRIS_MYSQL_PORT_3306_TCP_ADDR":"localhost",
+				"HYBRIS_MYSQL_ENV_MYSQL_ROOT_PASSWORD":"ufdcXNU8.JkBxJ5vu4bZ",
+				"HYBRIS_MYSQL_PORT_3306_TCP_PORT":"3306",
+				"HYBRIS_MYSQL_DATABASE":"hybris_qor_cms",
+				"HYBRIS_ENV":"development",
+				"HYBRIS_WEBDIR":"./www",
+				"HYBRIS_HOST":"http://hybris-demo.theplant-dev.com:9001"
 			},
 			"port": ":22"
 		}]
