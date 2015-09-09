@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"strings"
@@ -12,6 +14,7 @@ import (
 	"github.com/qor/qor/i18n"
 	"github.com/qor/qor/i18n/backends/database"
 	"github.com/qor/qor/roles"
+	"github.com/theplant/hybris_qor_cms/config"
 	"github.com/theplant/hybris_qor_cms/controllers"
 	"github.com/theplant/hybris_qor_cms/db"
 )
@@ -30,6 +33,12 @@ func main() {
 		Type:     "rich_editor",
 		Resource: adm.AddResource(&admin.AssetManager{}, &admin.Config{Invisible: true}),
 	})
+
+	page.Meta(&admin.Meta{Name: "Url", Valuer: func(resource interface{}, ctx *qor.Context) interface{} {
+		url := resource.(*db.Page).Url
+		url = fmt.Sprintf(`<a href="%s/page%s">%s</a>`, config.CmsHost, url, url)
+		return template.HTML(url)
+	}})
 
 	I18nBackend := database.New(&db.DB)
 	// config.I18n = i18n.New(I18nBackend)

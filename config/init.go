@@ -15,6 +15,7 @@ var (
 	MySQLRootPassword string
 	Verbose           bool
 	Host              string
+	CmsHost           string
 )
 
 func init() {
@@ -29,6 +30,7 @@ func init() {
 	MySQLDatabase = envOrPanic("HYBRIS_MYSQL_DATABASE", false)
 	Verbose = (envOrPanic("HYBRIS_VERBOSE", true) != "")
 	Host = envOrPanic("HYBRIS_HOST", false)
+	CmsHost = envOrPanic("HYBRIS_CMS_HOST", false)
 }
 
 func envOrPanic(key string, allowEmpty bool) (r string) {

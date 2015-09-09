@@ -6,3 +6,4 @@ export HYBRIS_MYSQL_DATABASE=hybris_qor_cms
 export HYBRIS_ENV=development
 export HYBRIS_WEBDIR=./www
 export HYBRIS_HOST=http://localhost:9001
+export HYBRIS_CMS_HOST=http://localhost:9000

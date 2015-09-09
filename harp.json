@@ -24,6 +24,7 @@
 				"HYBRIS_ENV":"development",
 				"HYBRIS_WEBDIR":"./www",
 				"HYBRIS_HOST":"http://hybris-demo.theplant-dev.com:9001"
+				"HYBRIS_CMS_HOST":"http://hybris-demo.theplant-dev.com:9000"
 			},
 			"port": ":22"
 		}]
