@@ -6,8 +6,8 @@ import "github.com/jinzhu/gorm"
 type Page struct {
 	gorm.Model
 	Url          string
-	Section1     string `sql:"size:10000"`
-	ProductCodes string
+	Section1     string     `sql:"size:10000"`
+	ProductCodes string     `sql:"size:10000"`
 	Products     []*Product `gorm:"many2many:page_products"`
 	Name         string
 }
