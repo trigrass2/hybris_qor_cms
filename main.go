@@ -41,6 +41,9 @@ func main() {
 		return template.HTML(url)
 	}})
 
+	page.NewAttrs("-ProductCodes")
+	page.EditAttrs("-ProductCodes")
+	page.IndexAttrs("-ProductCodes")
 	I18nBackend := database.New(&db.DB)
 	// config.I18n = i18n.New(I18nBackend)
 	adm.AddResource(i18n.New(I18nBackend), &admin.Config{Menu: []string{"系统设置"}, Invisible: true})

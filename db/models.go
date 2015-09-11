@@ -9,7 +9,6 @@ type Page struct {
 	Section1     string     `sql:"size:10000"`
 	ProductCodes string     `sql:"size:10000"`
 	Products     []*Product `gorm:"many2many:page_products"`
-	Name         string
 }
 
 type Product struct {
