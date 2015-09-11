@@ -28,6 +28,7 @@ func main() {
 
 	adm.SetAuth(&Auth{})
 	page := adm.AddResource(&db.Page{}, &admin.Config{Menu: []string{"Cms"}})
+	// adm.AddResource(&db.Product{}, &admin.Config{Menu: []string{"Cms"}})
 	page.Meta(&admin.Meta{
 		Name:     "Section1",
 		Type:     "rich_editor",
@@ -56,9 +57,8 @@ func main() {
 		// listing
 		// pageRoutes.GET("", controllers.ListBooksHandler)
 		// pageRoutes.GET("/", controllers.ListBooksHandler)
-		pageRoutes.GET("/:url", controllers.ViewPageHandler2)
+		pageRoutes.GET("/:url", controllers.ViewPageHandler)
 	}
-	// router.GET("/:pageurl", controllers.ViewPageHandler2)
 	mux.Handle("/", router)
 
 	log.Println("Starting Server at 9000.")
@@ -75,7 +75,7 @@ func bindPages(router *gin.Engine) {
 		if !strings.HasPrefix(page.Url, "/") {
 			page.Url = "/" + page.Url
 		}
-		router.GET(page.Url, controllers.ViewPageHandler2)
+		router.GET(page.Url, controllers.ViewPageHandler)
 	}
 }
 

@@ -14,6 +14,7 @@ var DB gorm.DB
 var AllModels = []interface{}{
 	&Page{},
 	&admin.AssetManager{},
+	&Product{},
 }
 
 func init() {

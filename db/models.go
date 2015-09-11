@@ -8,12 +8,15 @@ type Page struct {
 	Url          string
 	Section1     string `sql:"size:10000"`
 	ProductCodes string
+	Products     []*Product `gorm:"many2many:page_products"`
+	Name         string
 }
 
 type Product struct {
 	gorm.Model
+	Code          string `json:"@code"`
 	Name          string
-	Description   string
+	Description   string `sql:"size:10000"`
 	Picture       *Picture
 	Price         *Price
 	Europe1Prices *Europe1Price
